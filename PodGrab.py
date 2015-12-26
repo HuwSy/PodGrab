@@ -577,7 +577,7 @@ def iterate_channel(chan, today, mode, cur, conn, feed, channel_title):
 			
 			try:
 				struct_last_ep = strptime(last_ep, "%a, %d %b %Y %H:%M:%S")
-				has_error = 0
+				# has_error = 0
 			except TypeError:
 				has_error = 1
 				print "This item has a badly formatted date. Cannot download!"
