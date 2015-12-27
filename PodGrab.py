@@ -545,22 +545,33 @@ def iterate_channel(chan, today, mode, cur, conn, feed, channel_title):
 	saved = 0
 	size = 0
 	last_ep = "NULL"
+	items = chan.getElementsByTagName('item')
 	print "Iterating channel..."
 	
 	if does_sub_exist(cur, conn, feed):
 		print "Podcast subscription exists"
-		
 	else:
 		print "Podcast subscription is new - getting previous podcast"
 		insert_subscription(cur, conn, chan.getElementsByTagName('title')[0].firstChild.data, feed)
 
 	last_ep = get_last_subscription_downloaded(cur, conn, feed)
 	
+	print "Determining feed order"
+	try:
+		firstdate = strptime(fix_date(items[0].getElementsByTagName('pubDate')[0].firstChild.data), "%a, %d %b %Y %H:%M:%S")
+		lastdate = strptime(fix_date(items[len(items)-1].getElementsByTagName('pubDate')[0].firstChild.data), "%a, %d %b %Y %H:%M:%S")
+		if mktime(lastdate) > mktime(firstdate):
+			items = reversed(items)	
+	except TypeError:
+		error_reversing = 1
+	except ValueError:
+		error_reversing = 1
+	
 	### NB NB - The logic here is that we get the "last_ep" before we enter the loop 
 	### The result is that it allows the code to "catch up" on missed episodes because 
 	### we never update the "last_ep" while inside the loop.  
 	
-	for item in chan.getElementsByTagName('item'):
+	for item in items:
 		try:
 			item_title = item.getElementsByTagName('title')[0].firstChild.data
 			item_date = item.getElementsByTagName('pubDate')[0].firstChild.data
@@ -628,7 +639,11 @@ def fix_date(date):
 	new_date = ""
 	split_array = date.split(' ')
 	for i in range(0,5):
-		new_date = new_date + split_array[i] + " "
+		if i == 2
+			new_date = new_date + split_array[i] + " "
+		else
+			month = split_array[i]
+			new_date = new_date + month[:3] + " "
 	return new_date.rstrip()
 
 
