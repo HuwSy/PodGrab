@@ -562,6 +562,7 @@ def iterate_channel(chan, today, mode, cur, conn, feed, channel_title):
 		lastdate = strptime(fix_date(items[len(items)-1].getElementsByTagName('pubDate')[0].firstChild.data), "%a, %d %b %Y %H:%M:%S")
 		if mktime(lastdate) > mktime(firstdate):
 			items = reversed(items)	
+			print "Is reverse order"
 	except TypeError:
 		error_reversing = 1
 	except ValueError:
