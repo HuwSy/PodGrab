@@ -9,6 +9,9 @@
 # Werner Avenant - added small changes to write M3U file of podcasts downloaded today
 # werner.avenant@gmail.com (http://www.collectiveminds.co.za)
 
+# HuwSy
+# 2016/03/11
+
 # Do with this code what you will, it's "open source". As a courtesy,
 # I would appreciate credit if you base your code on mine. If you find
 # a bug or think the code sucks balls, please let me know :-) 
@@ -338,7 +341,8 @@ def iterate_feed(data, mode, download_dir, today, cur, conn, feed):
                 	print "Channel Link: " + channel_link
 			channel_title = clean_string(channel_title)
                   
-                	channel_directory = download_dir + os.sep + channel_title
+			# + os.sep + channel_title
+                	channel_directory = download_dir
                 	if not os.path.exists(channel_directory):
                 		os.makedirs(channel_directory)
                 	print "Current Date: ", today
@@ -395,7 +399,8 @@ def write_podcast(item, channel_title, date, type):
 	if len(item_file_name) > 50:
 		item_file_name = item_file_name[:50]
 	
-	local_file = current_directory + os.sep + DOWNLOAD_DIRECTORY + os.sep + channel_title + os.sep + clean_string(item_file_name)
+	# + os.sep + channel_title
+	local_file = current_directory + os.sep + DOWNLOAD_DIRECTORY + os.sep + clean_string(item_file_name)
 	if type == "video/quicktime" or type == "audio/mp4" or type == "video/mp4":
 		if not local_file.endswith(".mp4"):
 			local_file = local_file + ".mp4"
