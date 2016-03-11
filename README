@@ -40,7 +40,7 @@ Author: HuwSy
 
 Changes after fork:
 
-- 	Removed line 580 as it was suppressing valid errors
+-  Removed line 580 as it was suppressing valid errors
 -  Use of urllib.urlretrieve instead of buffering to work on small memory devices (i.e RPi)
--  Fixes for feeds in reverse order  and feeds with non standard date times (some not all date times parsed)
+-  Fixes for feeds in reverse order and feeds with (some) non standard date times
 -  Removed separate channel title directories when downloading
