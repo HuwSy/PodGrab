@@ -33,3 +33,14 @@ Changes after fork:
     - Function update_subscription will check to see if the last_ep is older
       than the existing last_ep
     - Moved NUM_MAX_DOWNLOAD to the front of the file for easy configuration
+
+==== CHANGES MADE AFTER NEXT FORK ====
+
+Author: HuwSy
+
+Changes after fork:
+
+- 	Removed line 580 as it was suppressing valid errors
+-  Use of urllib.urlretrieve instead of buffering to work on small memory devices (i.e RPi)
+-  Fixes for feeds in reverse order  and feeds with non standard date times (some not all date times parsed)
+-  Removed separate channel title directories when downloading
