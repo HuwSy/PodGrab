@@ -248,7 +248,9 @@ def main(argv):
 
 def open_datasource(xml_url):
 	try:
-        	response = urllib2.urlopen(xml_url)
+		opener = urllib2.build_opener()
+		opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+		response = opener.open(xml_url)
        	except ValueError:
        		try:
                		response = open(xml_url,'r')
