@@ -423,17 +423,18 @@ def write_podcast(item, channel_title, date, type):
 		if not local_file.endswith(".webm"):
 			local_file = local_file + ".webm"
 
-	elif type == "audio/mpeg":
-		if not local_file.endswith(".mp3"):
-			local_file = local_file + ".mp3"
-
 	elif type == "audio/ogg" or type == "video/ogg" or type == "audio/vorbis":
 		if not local_file.endswith(".ogg"):
 			local_file = local_file + ".ogg"
+
 	elif type == "audio/x-ms-wma" or type == "audio/x-ms-wax":
 		if not local_file.endswith(".wma"):
 			local_file = local_file + ".wma"
-      
+	
+	else:
+		if not local_file.endswith(".mp3"):
+			local_file = local_file + ".mp3"
+
 	# Check if file exists, but if the file size is zero (which happens when the user
 	# presses Crtl-C during a download) - the the code should go ahead and download 
 	# as if the file didn't exist
