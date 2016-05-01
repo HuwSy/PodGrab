@@ -9,8 +9,7 @@
 # Werner Avenant - added small changes to write M3U file of podcasts downloaded today
 # werner.avenant@gmail.com (http://www.collectiveminds.co.za)
 
-# HuwSy - Bug fix, Low Memory (RPi) fixes, Reversed feed and poorly dated feed fixes, 
-#   User agent in feed request for some feeds and optional channel dirs and todays m3u
+# HuwSy - Changes see readme
 
 # Do with this code what you will, it's "open source". As a courtesy,
 # I would appreciate credit if you base your code on mine. If you find
