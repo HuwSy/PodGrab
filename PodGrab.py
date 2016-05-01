@@ -9,8 +9,8 @@
 # Werner Avenant - added small changes to write M3U file of podcasts downloaded today
 # werner.avenant@gmail.com (http://www.collectiveminds.co.za)
 
-# HuwSy - Many changes see: https://github.com/HuwSy/PodGrab/commits/master/PodGrab.py
-# 2016/03/11
+# HuwSy - Bug fix, Low Memory (RPi) fixes, Reversed feed and poorly dated feed fixes, 
+#   User agent in feed request for some feeds and optional channel dirs and todays m3u
 
 # Do with this code what you will, it's "open source". As a courtesy,
 # I would appreciate credit if you base your code on mine. If you find
