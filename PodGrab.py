@@ -59,6 +59,8 @@ CREATE_M3U = False
 
 CHANNEL_DIRS = False
 
+MAX_RSS_LENGTH = 5242880
+
 # Added 2011-10-06 Werner Avenant - added current_dictory here so it can be global
 current_directory = ''
 m3u_file = ''
@@ -352,6 +354,13 @@ def iterate_feed(data, mode, download_dir, today, cur, conn, feed):
 	print "Iterating feed..."
 	message = ""
 	try:
+		data = data.replace("& ", "&amp; ")
+                if len(data) > MAX_RSS_LENGTH:
+                       ending = data[MAX_RSS_LENGTH:].find("</item>")
+                       if ending > -1:
+                               ending = ending + MAX_RSS_LENGTH
+                               data = data[:ending] + "</item></channel></rss>"
+
 		xml_data = xml.dom.minidom.parseString(data)
 		for channel in xml_data.getElementsByTagName('channel'):
 			channel_title = channel.getElementsByTagName('title')[0].firstChild.data
