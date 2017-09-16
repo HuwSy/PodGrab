@@ -478,6 +478,7 @@ def write_podcast(item, channel_title, date, type):
 	else:
 		print "\nDownloading " + item_file_name + " which was published on " + date
 		try:
+			urllib.URLopener.version = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36 SE 2.X MetaSr 1.0'
 			urllib.urlretrieve(item, local_file)
 			# item_file = urllib2.urlopen(item)
 			# output = open(local_file, 'wb')
